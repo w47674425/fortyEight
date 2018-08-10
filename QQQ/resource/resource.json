@@ -1,0 +1,75 @@
+{
+	"resources": [
+		{
+			"name": "background_png",
+			"type": "image",
+			"url": "texture/background.png"
+		},
+		{
+			"name": "candy_png",
+			"type": "image",
+			"url": "texture/candy.png"
+		},
+		{
+			"name": "circle_png",
+			"type": "image",
+			"url": "texture/circle.png"
+		},
+		{
+			"name": "circle2_png",
+			"type": "image",
+			"url": "texture/circle2.png"
+		},
+		{
+			"name": "end_png",
+			"type": "image",
+			"url": "texture/end.png"
+		},
+		{
+			"name": "explain_png",
+			"type": "image",
+			"url": "texture/explain.png"
+		},
+		{
+			"name": "gameOverBG_png",
+			"type": "image",
+			"url": "texture/gameOverBG.png"
+		},
+		{
+			"name": "preloading_gif",
+			"type": "image",
+			"url": "texture/preloading.gif"
+		},
+		{
+			"name": "rect_png",
+			"type": "image",
+			"url": "texture/rect.png"
+		},
+		{
+			"name": "rect2_png",
+			"type": "image",
+			"url": "texture/rect2.png"
+		},
+		{
+			"name": "title_png",
+			"type": "image",
+			"url": "texture/title.png"
+		},
+		{
+			"name": "triangle_png",
+			"type": "image",
+			"url": "texture/triangle.png"
+		},
+		{
+			"name": "resource_json",
+			"type": "json",
+			"url": "resource.json"
+		}
+	],
+	"groups": [
+		{
+			"name": "preload",
+			"keys": "background_png,candy_png,circle_png,circle2_png,end_png,explain_png,gameOverBG_png,preloading_gif,rect_png,rect2_png,title_png,triangle_png,resource_json"
+		}
+	]
+}
