@@ -18,6 +18,11 @@
 		"bin-debug/LoadingUI.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
-		"bin-debug/ThemeAdapter.js"
+		"bin-debug/ThemeAdapter.js",
+		"bin-debug/Managers/Resources.js",
+		"bin-debug/Managers/SceneManager.js",
+		"bin-debug/Utilities/Const.js",
+		"bin-debug/Utilities/PhyUtils.js",
+		"bin-debug/Utilities/RigidBody.js"
 	]
 }

@@ -15,10 +15,10 @@ var Main = (function (_super) {
         _this._isDebug = false;
         _this.factor = 50;
         _this.level_num = 0; //关卡序号
-        _this.world = new p2.World();
         _this.success_num = new Array(16); //level_num关卡中的所有物体（包括支撑物体）
         _this.sleep_num = new Array(16); //level_num关卡中的移动物体数
         _this.beta_gamma = 0; //手机倾斜角
+        _this.rigidBody = new RigidBody();
         _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAddToStage, _this);
         return _this;
     }
@@ -63,115 +63,138 @@ var Main = (function (_super) {
     */
     Main.prototype.createGameScene = function () {
         var _this = this;
-        this.success_num[0] = 2;
-        this.success_num[1] = 6;
-        this.success_num[2] = 10;
-        this.success_num[3] = 8;
-        this.success_num[4] = 12;
-        this.success_num[5] = 5;
-        this.success_num[6] = 8;
-        this.success_num[7] = 11;
-        this.success_num[8] = 10;
-        this.success_num[9] = 11;
-        this.success_num[10] = 11;
-        this.success_num[11] = 12;
-        this.success_num[12] = 7;
-        this.success_num[13] = 13;
-        this.success_num[14] = 12;
-        this.success_num[15] = 8;
-        this.sleep_num[0] = 1;
-        this.sleep_num[1] = 5;
-        this.sleep_num[2] = 8;
-        this.sleep_num[3] = 7;
-        this.sleep_num[4] = 10;
-        this.sleep_num[5] = 4;
-        this.sleep_num[6] = 7;
-        this.sleep_num[7] = 10;
-        this.sleep_num[8] = 7;
-        this.sleep_num[9] = 6;
-        this.sleep_num[10] = 7;
-        this.sleep_num[11] = 8;
-        this.sleep_num[12] = 5;
-        this.sleep_num[13] = 11;
-        this.sleep_num[14] = 10;
-        this.sleep_num[15] = 6;
         this.init();
-        this.level(this.level_num);
-        var _label = new egret.TextField();
-        _label.y = 50;
-        _label.x = 50;
-        _label.textColor = 0x00ff00;
-        this.addChild(_label);
-        var orientation = new egret.DeviceOrientation(); //创建 DeviceOrientation 类
-        orientation.addEventListener(egret.Event.CHANGE, this.onOrientation, this); //添加事件监听器
-        orientation.start(); //开始监听设备方向变化
-        //        var sound:egret.Sound = RES.getRes( "song" ); 
-        //        var channel:egret.SoundChannel = sound.play(1,-1);
-        var fall_num = 0;
-        var count = 0;
-        var count_sleep = 0;
-        egret.startTick(function (dt) {
-            _this.world.step(dt / 1000);
-            _this.world.gravity[0] = _this.beta_gamma / 30;
-            if (!_this._isDebug) {
-                var stageHeight = _this.stage.stageHeight;
-                var l = _this.world.bodies.length;
-                for (var i = 0; i < l; i++) {
-                    var boxBody = _this.world.bodies[i];
-                    if (boxBody) {
-                        if (boxBody.displays[0]) {
-                            var box = boxBody.displays[0];
-                        }
-                        if (box) {
-                            box.x = boxBody.position[0] * _this.factor;
-                            box.y = stageHeight - boxBody.position[1] * _this.factor;
-                            if (box.y > 900) {
-                                count = 0;
-                                _this.level(-2);
-                            }
-                            box.rotation = 360 - boxBody.angle * 180 / Math.PI;
-                            if (boxBody.sleepState == p2.Body.SLEEPING) {
-                                box.alpha = 0.8;
-                                count_sleep += 1;
-                            }
-                            else {
-                                box.alpha = 1;
-                            }
-                            if (l == _this.success_num[_this.level_num]) {
-                                if (count == 4000) {
-                                    _this.level_num += 1;
-                                    Data.score = _this.level_num;
-                                    _this.level(_this.level_num);
-                                    l = 0;
-                                    count = 0;
-                                }
-                                else {
-                                    count = count + 1;
-                                }
-                            }
-                        }
+        /*
+         * 说明：首先要清楚，egret和p2.js是两个坐标系独立没有关联的库，
+         * 需要我们手动代码进行转换和关联。
+         * 关键的几步：
+         *
+         * 1. 转换坐标和度量
+         *    p2.js坐标原点左下角，向上向右（重力为负）
+         *    egert坐标原点左上角，向右向下
+         *    p2.js使用MKS(米 千克 秒),egert使用px像素
+         *
+         * 2. 将egert图元贴到p2.js body上
+         *    p2body.displays = [egert里面的displayobject]
+         *
+         */
+        console.log("start");
+        //准备工作
+        var stageH = egret.MainContext.instance.stage.stageHeight;
+        var stageW = egret.MainContext.instance.stage.stageHeight;
+        var circlePosX = 100; //把球摆放在距离屏幕左上角为100,100px位置
+        var circlePosY = 100;
+        var circleR = 50;
+        //设置p2.js和egret二者距离的度量衡转换比例
+        //p2.js 单位是MKS(米 千克 秒)，egert是像素px
+        var factor = 50;
+        //可理解为p2.js的一米长度是egert中屏幕的50px
+        //创建地面
+        var groundVsl = new egret.Shape();
+        groundVsl.graphics.beginFill(0xaaccdd);
+        groundVsl.graphics.drawRect(0, stageH - 10, stageW, 10);
+        groundVsl.graphics.endFill();
+        this.addChild(groundVsl); //立即加到场景里
+        //第二步：创建独立的p2物理世界
+        //create world
+        this.world = new p2.World({
+            gravity: [0, -9.82]
+        }); //p2.js坐标原点左下角，向上向右（重力为负）
+        this.world.sleepMode = p2.World.BODY_SLEEPING;
+        /*
+         * 说明：
+         * 先创造egert外观更方便，因为创建p2.js body时需要
+         * 根据屏幕像素位置(egert位置)计算p2.js body的位置。
+         */
+        this.touchEnabled = true;
+        var timer = new egret.Timer(200);
+        timer.addEventListener(egret.TimerEvent.TIMER, function () {
+            //创建圆
+            var posX = Math.random() * 700;
+            var posY = -Math.random() * 50;
+            var circleVsl = new egret.Shape();
+            circleVsl.graphics.beginFill(0xffffff);
+            circleVsl.graphics.drawCircle(0, 0, circleR); //千万不要填写x,y坐标为非零值，后果自负
+            circleVsl.graphics.endFill();
+            circleVsl.x = posX;
+            circleVsl.y = posY;
+            _this.addChild(circleVsl); //立即加到场景里
+            //将egret坐标的100，100像素转换为p2.js中的米(注意Y方向)
+            var circlePosXInP2 = PhyUtils.Instance().extendX(posX);
+            var circlePosYInP2 = PhyUtils.Instance().extendY(posY);
+            var circleRInP2 = circleR / factor; //半径也要转换
+            var circleBody = new p2.Body({
+                mass: 1,
+                position: [circlePosXInP2, circlePosYInP2] //重中之重
+            });
+            var circleShape = new p2.Circle({
+                radius: circleRInP2
+            });
+            circleBody.addShape(circleShape);
+            _this.world.addBody(circleBody);
+            circleBody.displays = [circleVsl];
+        }, this);
+        timer.start();
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_END, function (e) {
+            _this.world.bodies.forEach(function (body) {
+                var posY = stageH - body.position[1] * factor;
+                {
+                    var x = Math.random() * 200 - 100;
+                    var y = posY / 2;
+                    body.applyForce([x, y], body.position);
+                }
+            });
+        }, this);
+        // ground and groundAndwall
+        this.groundAndwall();
+        //第三步：将p2.js物理引擎和egret关联
+        //        groundBody.displays = [groundVsl];
+        //第四步：p2.js世界动起来
+        egret.Ticker.getInstance().register(function (dt) {
+            var _this = this;
+            //p2.js的世界时间流逝
+            this.world.step(dt / 1000);
+            //看不到的p2物体在下落，egret的外观图片也要时刻更新位置
+            this.world.bodies.forEach(function (body) {
+                if (body.displays) {
+                    body.displays[0].x = body.position[0] * factor;
+                    body.displays[0].y = stageH - body.position[1] * factor;
+                    if (body.displays[0].y > stageH + 100) {
+                        if (body.displays[0].x < 350)
+                            console.log('left');
+                        else
+                            console.log('right');
+                        _this.world.removeBody(body);
                     }
                 }
-                if (count_sleep == _this.sleep_num[_this.level_num]) {
-                    _this.level_num += 1;
-                    Data.score = _this.level_num;
-                    _this.level(_this.level_num);
-                    l = 0;
-                    count = 0;
-                    count_sleep = 0;
-                }
-                else {
-                    count_sleep = 0;
-                }
-            }
-            return true;
+            });
+            /*
+             * 小球下落
+             * egert    y坐标变大(正数)
+             * p2.js    y坐标减小(正数)
+             * 二者之和就是屏幕高度
+             */
         }, this);
+        egret.lifecycle.onPause = function () {
+            egret.ticker.pause();
+        };
+        egret.lifecycle.onResume = function () {
+            egret.ticker.resume();
+        };
     };
     Main.prototype.init = function () {
-        this.world.clear();
-        this.world.sleepMode = p2.World.BODY_SLEEPING;
-        this.world.gravity = [0, -5];
+        PhyUtils.Instance().factor = this.factor;
+        PhyUtils.Instance().stageH = egret.MainContext.instance.stage.stageHeight;
         this.removeChildren();
+    };
+    Main.prototype.groundAndwall = function () {
+        this.rigidBody.factor = this.factor;
+        this.rigidBody.world = this.world;
+        this.addChild(this.rigidBody.supportertrect(1, 100, 0, 0, 0));
+        this.addChild(this.rigidBody.supportertrect(5, 1, 0, -50, 0));
+        this.addChild(this.rigidBody.supportertrect(6, 1, 0, 325, 0));
+        this.addChild(this.rigidBody.supportertrect(5, 1, 0, 700, 0));
+        this.addChild(this.rigidBody.supportertrect(1, 100, 0, 640, 0));
     };
     Main.prototype.gameover = function () {
         this._gameOverPanel = new GameOverPanel();
