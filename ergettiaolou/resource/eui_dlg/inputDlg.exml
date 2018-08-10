@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="input" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image id="background" height="100%" width="100%" source="mask_png" anchorOffsetY="0" horizontalCenter="0" verticalCenter="-20"/>
+	<e:Label text="请输入你的名字：" horizontalCenter="0" verticalCenter="-55"/>
+	<e:TextInput id="nameTextInput" width="243" height="44" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0" verticalCenter="0"/>
+	<e:Button id="okBtn" label="确定" verticalCenter="52.5" horizontalCenter="0"/>
+	<e:Button id="closeBtn" label="关闭" verticalCenter="-110" right="0"/>
+</e:Skin>

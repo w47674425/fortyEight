@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="GameDlgSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image id="background" height="100%" width="100%" x="0" y="0" source="gameback_png"/>
+	<e:Label id="scoretext" text="得分：0" x="0" y="10" anchorOffsetX="0" width="521" anchorOffsetY="0" height="48" size="40" fontFamily="SimSun" textColor="0x307992"/>
+	<e:BitmapLabel id="comboshow" width="753" height="70" x="49.5" y="548" anchorOffsetX="0" anchorOffsetY="0" text="" font="combofnt_fnt"/>
+	<e:BitmapLabel id="getscoreshow" width="244" height="70" x="5.5" y="52" anchorOffsetX="0" anchorOffsetY="0" font="combofont_fnt" text=""/>
+</e:Skin>

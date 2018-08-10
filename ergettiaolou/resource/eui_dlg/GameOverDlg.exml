@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="GameOverDlgSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image id="background" height="100%" width="100%" x="0" y="0" source="gameback_png"/>
+	<e:Button id="needrankBtn" anchorOffsetX="0" anchorOffsetY="0" rotation="0" horizontalCenter="0" bottom="454" label="我要上榜" skinName="skins.ButtonSkin">
+	</e:Button>
+	<e:Image width="681" height="246" y="167" anchorOffsetX="0" anchorOffsetY="0" source="title_png" scaleX="0.9" scaleY="0.9" horizontalCenter="0"/>
+	<e:Button id="rankBtn" anchorOffsetX="0" anchorOffsetY="0" rotation="0" horizontalCenter="0" bottom="150">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="rank_png" source.down="rank_png" source.disabled="rank_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="backBtn" anchorOffsetX="0" anchorOffsetY="0" rotation="0" horizontalCenter="0" bottom="250">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="back_png" source.down="back_png" source.disabled="return_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="againBtn" anchorOffsetX="0" anchorOffsetY="0" rotation="0" bottom="350" horizontalCenter="0">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="again_png" source.down="again_png" source.disabled="return_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Label id="resulttext" text="你的成绩为：" y="456" size="50" anchorOffsetX="0" width="351.85" horizontalCenter="-10" fontFamily="SimSun" anchorOffsetY="0" height="84"/>
+</e:Skin>

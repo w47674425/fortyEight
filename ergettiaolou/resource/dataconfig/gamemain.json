@@ -1,0 +1,84 @@
+{
+    "game": {
+        
+    },
+	"difficult":[
+	{
+		"score": "0",
+		"manintervaltime": "2000",
+        "starintervaltime": "10000",
+        "speedrate": "0.00",
+        "timerate": "0.00"
+	},
+	{
+		"score": "20",
+		"manintervaltime": "2000",
+        "starintervaltime": "10000",
+		"speedrate": "0.1",
+		"timerate": "0.01"
+	},
+	{
+		"score": "70",
+		"manintervaltime": "2000",
+        "starintervaltime": "10000",
+		"speedrate": "0.3",
+		"timerate": "0.02"
+	},
+	{
+		"score": "120",
+		"manintervaltime": "2000",
+        "starintervaltime": "10000",
+		"speedrate": "0.5",
+		"timerate": "0.04"
+	},
+	{
+		"score": "220",
+		"manintervaltime": "2000",
+        "starintervaltime": "10000",
+		"speedrate": "0.7",
+		"timerate": "0.06"
+	},
+	{
+		"score": "400",
+		"manintervaltime": "2000",
+        "starintervaltime": "10000",
+		"speedrate": "0.9",
+		"timerate": "0.08"
+	},	
+	{
+		"score": "650",
+		"manintervaltime": "2000",
+        "starintervaltime": "10000",
+		"speedrate": "1.1",
+		"timerate": "0.1"
+	}
+	],
+    "jumpman": {
+		"x": "40",
+		"runspeed": "250",
+		"runtime": "2000",
+        "speedx": "0",
+        "speedy":"30",
+        "jumptime": "500",
+        "basescore": "1",
+        "highscore": "2"
+    },
+    "itemstar": {
+		"width": "45",
+		"height": "35",
+        "speedx": "10", 
+        "speedy":"30",
+        "jumptime": "500",
+        "basescore": "50",
+        "highscore": "50"
+    },
+    "itembomb": {
+		"width": "40",
+		"height": "30",
+        "speedx": "10", 
+        "speedy":"30",
+        "jumptime": "500",
+        "basescore": "-25",
+        "highscore": "-25"
+    }
+}
