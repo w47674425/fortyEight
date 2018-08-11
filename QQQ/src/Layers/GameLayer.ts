@@ -65,16 +65,16 @@ class GameLayer extends eui.Component {
          * 根据屏幕像素位置(egert位置)计算p2.js body的位置。
          */
 		this.touchEnabled = true;
-		let angle = 45;
+		let angle = -30;
 		var timer: egret.Timer = new egret.Timer(this.timeSpan);
 		//创建圆
 		timer.addEventListener(egret.TimerEvent.TIMER, () => {
 			let posX = Math.random() * 700;
-			let posY = - 50;
+			let posY = 50;
 
 			let circle = this.rigidBody.createCircle(this.circleR, posX, posY);
 			this.addChild(circle[0]);
-			circle[1].velocity = this.flyJet(angle, 2);
+			circle[1].velocity = this.flyJet(angle, 10);
 			this.actived_fishes.push(circle[1]);
 			this.world.addBody(circle[1]);
 		}, this);
@@ -135,7 +135,7 @@ class GameLayer extends eui.Component {
 			}
 
 			this.bubbles.forEach(bubble => {
-				bubble.applyForce([0, this.gravity * bubble.getArea()], bubble.position);
+				bubble.applyForce([0, 0.05 * this.gravity * bubble.getArea()], bubble.position);
 			});
 		}, this);
 		_timer.start();
@@ -158,7 +158,7 @@ class GameLayer extends eui.Component {
 		_update.start();
 
 		let self = this;
-		let press_span = 0.8;
+		let press_span = 1.2;
 		let bvel = -5;
 		angle = 5;
 		// 键盘消息
@@ -176,7 +176,8 @@ class GameLayer extends eui.Component {
 				self.keypress_span_l_u = press_span
 				point = [30, 840];
 				velocity = [15, 0];
-				arr.push([_r, [30, 800], velocity]);
+				arr.push([_r, [30, 800], [velocity[0] + (Math.random() - 0.5) * 4, 0]]);
+				arr.push([_r, [30, 850], [velocity[0] + (Math.random() - 0.5) * 4, 0]]);
 			} else if (key == "q") {
 				// 左中
 				if (self.keypress_span_l_m > 0)
@@ -184,12 +185,13 @@ class GameLayer extends eui.Component {
 				self.keypress_span_l_m = press_span
 				point = [30, 440];
 				velocity = [15, 0];
-				arr.push([_r, [30, 400], velocity]);
+				arr.push([_r, [30, 400], [velocity[0] + (Math.random() - 0.5) * 4, 0]]);
+				arr.push([_r, [30, 450], [velocity[0] + (Math.random() - 0.5) * 4, 0]]);
 			} else if (key == "z") {
 				// 左下
 				if (self.keypress_span_l_d > 0)
 					return;
-				self.keypress_span_l_d = 1.5
+				self.keypress_span_l_d = 1.4
 				velocity = [0, 0];
 				point = [200, 1350];
 				arr.push([_r, [200, 1200], self.flyJet(angle, bvel)]);
@@ -203,7 +205,8 @@ class GameLayer extends eui.Component {
 				self.keypress_span_r_u = press_span
 				velocity = [-15, 0];
 				point = [self.stageW - 30, 840];
-				arr.push([_r, [-30, 800], velocity]);
+				arr.push([_r, [self.stageW-30, 800], [velocity[0] + (Math.random() - 0.5) * 4, 0]]);
+				arr.push([_r, [self.stageW-30, 850], [velocity[0] + (Math.random() - 0.5) * 4, 0]]);
 			} else if (key == "o") {
 				// 右中
 				if (self.keypress_span_r_m > 0)
@@ -211,12 +214,13 @@ class GameLayer extends eui.Component {
 				self.keypress_span_r_m = press_span
 				point = [self.stageW - 30, 440];
 				velocity = [-15, 0];
-				arr.push([_r, [-30, 400], velocity]);
+				arr.push([_r, [self.stageW-30, 400], [velocity[0] + (Math.random() - 0.5) * 4, 0]]);
+				arr.push([_r, [self.stageW-30, 450], [velocity[0] + (Math.random() - 0.5) * 4, 0]]);
 			} else if (key == "m") {
 				// 右下
 				if (self.keypress_span_r_d > 0)
 					return;
-				self.keypress_span_r_d = 1.5
+				self.keypress_span_r_d = 1.4
 				velocity = [0, 0];
 				point = [750, 1350];
 				arr.push([_r, [750, 1200], self.flyJet(angle, bvel)]);
@@ -227,7 +231,6 @@ class GameLayer extends eui.Component {
 			else {
 				return;
 			}
-			arr.push([_r, point, velocity]);
 			self.positive_bubbles.push(arr);
 			SoundMenager.Shared().PlayClick();
 		});
@@ -310,7 +313,7 @@ class GameLayer extends eui.Component {
 	}
 
 	private flyJet(angle, velocity): number[] {
-		return [Math.cos(Math.random() * angle - angle) * velocity, Math.sin(Math.random() * angle - angle) * velocity];
+		return [Math.cos(Math.random() * angle - angle) * velocity,   -1*velocity];
 	}
 
 	private calGravitation(p1: number[], p2: number[]): number[] {
@@ -382,7 +385,7 @@ class GameLayer extends eui.Component {
 			bar.skinName = "resource/eui_skins/ProgressBarLeftSkin.exml";
 		bar.direction = eui.Direction.BTT;
 		bar.y = 200;
-		bar.maximum = 30;
+		bar.maximum = 10;
 		bar.minimum = 0;
 		bar.value = 100;
 		return bar;
