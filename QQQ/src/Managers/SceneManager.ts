@@ -5,7 +5,7 @@ class SceneManager{
     
     public static instance:SceneManager = null;
     private gameLayer:Main = null;
-    private runninglayer: egret.DisplayObject = null;
+    private runninglayer: egret.DisplayObjectContainer = null;
     private stackLayer = [];
     private collector:egret.Timer = null;
     private timeSpan = 1 * 1000; // 回收器
@@ -34,7 +34,7 @@ class SceneManager{
     }
     
     //替换场景
-    public repleaceScene(layer:egret.DisplayObject) {
+    public repleaceScene(layer:egret.DisplayObjectContainer) {
         if (this.gameLayer != null && layer != null) {
             this.gameLayer.removeChildren();
             this.gameLayer.addChild(layer);
@@ -42,7 +42,7 @@ class SceneManager{
         }
     }
     //添加场景
-    public pushScene(layer:egret.DisplayObject) {
+    public pushScene(layer:egret.DisplayObjectContainer) {
         if (this.gameLayer != null && layer != null) {
             this.gameLayer.addChild(layer);
             this.stackLayer.push(layer);
@@ -50,7 +50,7 @@ class SceneManager{
         }
     }
 
-    public runningScene() : egret.DisplayObject {
+    public runningScene() : egret.DisplayObjectContainer {
         return this.runninglayer;
     }
 

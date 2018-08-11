@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="win" width="960" height="1280" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="background_png" x="0" y="0" width="960" height="1280"/>
+	<e:Image source="jiesuan_png" x="59.95" y="255.11" anchorOffsetX="0" width="840.09" anchorOffsetY="0" height="697.78"/>
+	<e:Image id="t_l" width="284" height="333" x="105.09" y="563.7" source="t_left_png" alpha="1"/>
+	<e:Image id="t_r" width="284" height="333" x="536.31" y="563.7" alpha="1" source="t_right_png"/>
+	<e:Image id="t_r_g" width="284" height="333" x="576.62" y="563.7" alpha="1" source="t_right_grey_png"/>
+	<e:Image id="t_l_g" width="284" height="333" x="105.09" y="563.7" alpha="1" source="t_left_grey_png"/>
+</e:Skin>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="NewFile" width="960" height="1280" xmlns:e="http://ns.egret.com/eui">
+	<e:Image source="begin_png" x="212" y="612" visible="false"/>
+	<e:Image width="960" height="1280" x="0" y="1" source="begin_png" anchorOffsetX="0" anchorOffsetY="0"/>
+</e:Skin>

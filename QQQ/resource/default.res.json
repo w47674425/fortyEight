@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,title_png,background_png,t_left_png,t_right_png,bubble_png,triangle_png,rect2_png,cannon_png,niddle_png,fish_y_png,fish_g_png,fish_p_png,fish_o_png",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,title_png,background_png,t_left_png,t_right_png,bubble_png,triangle_png,rect2_png,cannon_png,niddle_png,fish_y_png,fish_g_png,fish_p_png,fish_o_png,t_right_grey_png,rrb_png,lyb_png,ly_png,begin_png,jiesuan_png,rr_png,t_left_grey_png,begin2_png,ly2_png,lyb2_png,rr2_png,rrb2_png,t_left_grey2_png,t_right_grey2_png,jiesuan2_png",
 			"name": "preload"
 		}
 	],
@@ -132,74 +132,154 @@
 			"name": "egret_icon_png"
 		},
 		{
-			"name": "description_json",
+			"url": "config/description.json",
 			"type": "json",
-			"url": "config/description.json"
+			"name": "description_json"
 		},
 		{
-			"name": "title_png",
+			"url": "texture/title.png",
 			"type": "image",
-			"url": "texture/title.png"
+			"name": "title_png"
 		},
 		{
-			"name": "background_png",
+			"url": "texture/background.png",
 			"type": "image",
-			"url": "texture/background.png"
+			"name": "background_png"
 		},
 		{
-			"name": "t_left_png",
+			"url": "texture/t_left.png",
 			"type": "image",
-			"url": "texture/t_left.png"
+			"name": "t_left_png"
 		},
 		{
-			"name": "t_right_png",
+			"url": "texture/t_right.png",
 			"type": "image",
-			"url": "texture/t_right.png"
+			"name": "t_right_png"
 		},
 		{
-			"name": "bubble_png",
+			"url": "texture/bubble.png",
 			"type": "image",
-			"url": "texture/bubble.png"
+			"name": "bubble_png"
 		},
 		{
-			"name": "triangle_png",
+			"url": "texture/triangle.png",
 			"type": "image",
-			"url": "texture/triangle.png"
+			"name": "triangle_png"
 		},
 		{
-			"name": "rect2_png",
+			"url": "texture/rect2.png",
 			"type": "image",
-			"url": "texture/rect2.png"
+			"name": "rect2_png"
 		},
 		{
-			"name": "cannon_png",
+			"url": "texture/cannon.png",
 			"type": "image",
-			"url": "texture/cannon.png"
+			"name": "cannon_png"
 		},
 		{
-			"name": "niddle_png",
+			"url": "texture/niddle.png",
 			"type": "image",
-			"url": "texture/niddle.png"
+			"name": "niddle_png"
 		},
 		{
-			"name": "fish_y_png",
+			"url": "texture/fish_y.png",
 			"type": "image",
-			"url": "texture/fish_y.png"
+			"name": "fish_y_png"
 		},
 		{
-			"name": "fish_g_png",
+			"url": "texture/fish_g.png",
 			"type": "image",
-			"url": "texture/fish_g.png"
+			"name": "fish_g_png"
 		},
 		{
-			"name": "fish_p_png",
+			"url": "texture/fish_p.png",
 			"type": "image",
-			"url": "texture/fish_p.png"
+			"name": "fish_p_png"
 		},
 		{
-			"name": "fish_o_png",
+			"url": "texture/fish_o.png",
 			"type": "image",
-			"url": "texture/fish_o.png"
+			"name": "fish_o_png"
+		},
+		{
+			"url": "texture/begin.png",
+			"type": "image",
+			"name": "begin_png"
+		},
+		{
+			"url": "texture/jiesuan.png",
+			"type": "image",
+			"name": "jiesuan_png"
+		},
+		{
+			"url": "texture/ly.png",
+			"type": "image",
+			"name": "ly_png"
+		},
+		{
+			"url": "texture/lyb.png",
+			"type": "image",
+			"name": "lyb_png"
+		},
+		{
+			"url": "texture/rr.png",
+			"type": "image",
+			"name": "rr_png"
+		},
+		{
+			"url": "texture/rrb.png",
+			"type": "image",
+			"name": "rrb_png"
+		},
+		{
+			"url": "texture/t_left_grey.png",
+			"type": "image",
+			"name": "t_left_grey_png"
+		},
+		{
+			"url": "texture/t_right_grey.png",
+			"type": "image",
+			"name": "t_right_grey_png"
+		},
+		{
+			"url": "texture/begin.png",
+			"type": "image",
+			"name": "begin2_png"
+		},
+		{
+			"url": "texture/ly.png",
+			"type": "image",
+			"name": "ly2_png"
+		},
+		{
+			"url": "texture/lyb.png",
+			"type": "image",
+			"name": "lyb2_png"
+		},
+		{
+			"url": "texture/rr.png",
+			"type": "image",
+			"name": "rr2_png"
+		},
+		{
+			"url": "texture/rrb.png",
+			"type": "image",
+			"name": "rrb2_png"
+		},
+		{
+			"url": "texture/t_left_grey.png",
+			"type": "image",
+			"name": "t_left_grey2_png"
+		},
+		{
+			"url": "texture/t_right_grey.png",
+			"type": "image",
+			"name": "t_right_grey2_png"
+		},
+		{
+			"url": "texture/jiesuan.png",
+			"type": "image",
+			"name": "jiesuan2_png"
 		}
 	]
 }

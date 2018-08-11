@@ -1,3 +1,5 @@
+declare class NewFile extends eui.Skin{
+}
 declare module skins{
 	class ButtonSkin extends eui.Skin{
 	}
@@ -19,6 +21,8 @@ declare module skins{
 declare module skins{
 	class ItemRendererSkin extends eui.Skin{
 	}
+}
+declare class win extends eui.Skin{
 }
 declare module skins{
 	class PanelSkin extends eui.Skin{

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="Gaming" width="960" height="1280" xmlns:e="http://ns.egret.com/eui">
 	<e:Image width="960" height="1280" x="0" y="0" source="background_png"/>
-	<e:Image width="285" height="333" y="947" source="t_left_png" x="121.79"/>
-	<e:Image width="285" height="333" x="584.24" y="947" source="t_right_png"/>
-	<e:Image width="148" height="50" x="0" y="1230" source="rect2_png" anchorOffsetX="0"/>
-	<e:Image width="148" height="50" x="834" y="1230" source="rect2_png" anchorOffsetX="0"/>
-	<e:Image width="404" height="50" x="308" y="1230" source="rect2_png" anchorOffsetX="0"/>
+	<e:Image width="120" height="120" x="870" y="400" source="cannon_png"/>
+	<e:Image width="120" height="120" x="870" y="800" source="cannon_png"/>
+	<e:Image width="120" height="120" x="92" y="920" source="cannon_png" rotation="180"/>
+	<e:Image width="120" height="120" x="92" y="520" source="cannon_png" rotation="180"/>
 </e:Skin>
