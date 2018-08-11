@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,title_png,background_png,t_left_png,t_right_png,bubble_png,triangle_png,rect2_png,cannon_png,niddle_png,fish_y_png,fish_g_png,fish_p_png,fish_o_png",
 			"name": "preload"
 		}
 	],
@@ -135,6 +135,71 @@
 			"name": "description_json",
 			"type": "json",
 			"url": "config/description.json"
+		},
+		{
+			"name": "title_png",
+			"type": "image",
+			"url": "texture/title.png"
+		},
+		{
+			"name": "background_png",
+			"type": "image",
+			"url": "texture/background.png"
+		},
+		{
+			"name": "t_left_png",
+			"type": "image",
+			"url": "texture/t_left.png"
+		},
+		{
+			"name": "t_right_png",
+			"type": "image",
+			"url": "texture/t_right.png"
+		},
+		{
+			"name": "bubble_png",
+			"type": "image",
+			"url": "texture/bubble.png"
+		},
+		{
+			"name": "triangle_png",
+			"type": "image",
+			"url": "texture/triangle.png"
+		},
+		{
+			"name": "rect2_png",
+			"type": "image",
+			"url": "texture/rect2.png"
+		},
+		{
+			"name": "cannon_png",
+			"type": "image",
+			"url": "texture/cannon.png"
+		},
+		{
+			"name": "niddle_png",
+			"type": "image",
+			"url": "texture/niddle.png"
+		},
+		{
+			"name": "fish_y_png",
+			"type": "image",
+			"url": "texture/fish_y.png"
+		},
+		{
+			"name": "fish_g_png",
+			"type": "image",
+			"url": "texture/fish_g.png"
+		},
+		{
+			"name": "fish_p_png",
+			"type": "image",
+			"url": "texture/fish_p.png"
+		},
+		{
+			"name": "fish_o_png",
+			"type": "image",
+			"url": "texture/fish_o.png"
 		}
 	]
 }

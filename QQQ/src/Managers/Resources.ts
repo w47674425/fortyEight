@@ -19,6 +19,17 @@ class Resources{
         return result;
     }
 
+    public Cannon(): egret.Bitmap {
+        let result = new egret.Bitmap();
+        let texture: egret.Texture = RES.getRes("cannon_png");
+        result.texture = texture;
+        result.width = 120;
+        result.height = 120;
+        result.anchorOffsetX = result.width / 2;
+        result.anchorOffsetY = result.height / 2;
+        return result;
+    }
+
     public constructor() {   
     }  
 }

@@ -10,17 +10,18 @@
 		"libs/modules/p2Physics/p2Physics.js"
 	],
 	"game": [
-		"bin-debug/Data.js",
 		"bin-debug/Platform.js",
+		"bin-debug/AssetAdapter.js",
 		"bin-debug/GameExplainPanel.js",
 		"bin-debug/GameOverPanel.js",
 		"bin-debug/GameStartPanel.js",
 		"bin-debug/LoadingUI.js",
 		"bin-debug/Main.js",
-		"bin-debug/AssetAdapter.js",
+		"bin-debug/Data.js",
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/Managers/Resources.js",
 		"bin-debug/Managers/SceneManager.js",
+		"bin-debug/Managers/SoundManager.js",
 		"bin-debug/Utilities/Const.js",
 		"bin-debug/Utilities/PhyUtils.js",
 		"bin-debug/Utilities/RigidBody.js"

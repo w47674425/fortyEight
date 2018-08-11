@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////////////
 //
-//  Copyright (c) 2014-2015, Egret Technology Inc.
+//  Copyright (c) 2014-present, Egret Technology.
 //  All rights reserved.
 //  Redistribution and use in source and binary forms, with or without
 //  modification, are permitted provided that the following conditions are met:
@@ -51,10 +51,10 @@ var LoadingUI = (function (_super) {
         this.textField.height = 100;
         this.textField.textAlign = "center";
     };
-    LoadingUI.prototype.setProgress = function (current, total) {
+    LoadingUI.prototype.onProgress = function (current, total) {
         this.textField.text = "Loading..." + current + "/" + total;
     };
     return LoadingUI;
 }(egret.Sprite));
-__reflect(LoadingUI.prototype, "LoadingUI");
+__reflect(LoadingUI.prototype, "LoadingUI", ["RES.PromiseTaskReporter"]);
 //# sourceMappingURL=LoadingUI.js.map
