@@ -21,6 +21,7 @@ class Main extends eui.UILayer {
         egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
         egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
 
+        SoundMenager.Shared();
 
         this.runGame().catch(e => {
             console.log(e);
@@ -110,6 +111,8 @@ class Main extends eui.UILayer {
         this.displayBg();
         this.displayScore();
         this.dispalyCannon();
+
+        SoundMenager.Shared().PlayBGM();
         /*
          * 说明：首先要清楚，egret和p2.js是两个坐标系独立没有关联的库，
          * 需要我们手动代码进行转换和关联。
@@ -283,6 +286,7 @@ class Main extends eui.UILayer {
             }
             arr.push([_r, point, velocity]);
             self.positive_bubbles.push(arr);
+            SoundMenager.Shared().PlayClick();
         });
 
         // ground and groundAndwall

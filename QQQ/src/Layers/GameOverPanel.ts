@@ -27,8 +27,6 @@ class GameOverPanel extends egret.Sprite {
         img.width = w;
         img.height = h;
         this.addChild(img);  
-        
-
 
         this.txt = new egret.TextField();
         this.txt.width = w;
