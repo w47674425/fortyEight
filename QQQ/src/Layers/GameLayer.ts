@@ -80,15 +80,15 @@ class GameLayer extends eui.Component {
 		}, this);
 		timer.start();
 
-		var mtimer: egret.Timer = new egret.Timer((Math.random() * 5 + 8) * 1000);
+		var mtimer: egret.Timer = new egret.Timer((8) * 1000);
 		//创建引力球
 		mtimer.addEventListener(egret.TimerEvent.TIMER, () => {
-			let posX = Math.random() * 700;
+			let posX = Math.random() * 960; 
 			let posY = - Math.random() * 50;
 
 			let circle = this.rigidBody.createMagnet(this.circleR, posX, posY);
 			this.addChild(circle[0]);
-			circle[1].velocity = this.flyJet(angle, 5);
+			circle[1].velocity = this.flyJet(angle, 8);
 			circle[1].type = p2.Body.KINEMATIC;
 			this.actived_magnet.push(circle[1]);
 			this.world.addBody(circle[1]);
@@ -98,7 +98,7 @@ class GameLayer extends eui.Component {
 				if (displayobject.name == "fish") {
 					let posY = this.stageH - body.position[1] * this.factor
 					let x = 0;
-					let y = posY / 1.3;
+					let y = posY / 1.2;
 					let _posx = body.position[0] + displayobject.width / 2;
 					let _posy = body.position[0] + displayobject.height / 2;
 					console.log(posY + " [" + x + "," + y + "]");
@@ -191,7 +191,7 @@ class GameLayer extends eui.Component {
 				// 左下
 				if (self.keypress_span_l_d > 0)
 					return;
-				self.keypress_span_l_d = 1.4
+				self.keypress_span_l_d = 1.7
 				velocity = [0, 0];
 				point = [200, 1350];
 				arr.push([_r, [200, 1200], self.flyJet(angle, bvel)]);
@@ -220,7 +220,7 @@ class GameLayer extends eui.Component {
 				// 右下
 				if (self.keypress_span_r_d > 0)
 					return;
-				self.keypress_span_r_d = 1.4
+				self.keypress_span_r_d = 1.7
 				velocity = [0, 0];
 				point = [750, 1350];
 				arr.push([_r, [750, 1200], self.flyJet(angle, bvel)]);
