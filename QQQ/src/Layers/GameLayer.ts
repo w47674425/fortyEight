@@ -83,7 +83,7 @@ class GameLayer extends eui.Component {
 		var mtimer: egret.Timer = new egret.Timer((8) * 1000);
 		//创建引力球
 		mtimer.addEventListener(egret.TimerEvent.TIMER, () => {
-			let posX = Math.random() * 960; 
+			let posX = Math.random() * 960;
 			let posY = - Math.random() * 50;
 
 			let circle = this.rigidBody.createMagnet(this.circleR, posX, posY);
@@ -126,7 +126,7 @@ class GameLayer extends eui.Component {
 			if (bubbles) {
 				bubbles.forEach(bubble => {
 					let circle = self.rigidBody.createBubble(bubble[0], bubble[1][0], bubble[1][1]);
-					self.addChildAt(circle[0], 10);
+					self.addChildAt(circle[0], 20);
 					circle[1].gravityScale = 0;
 					circle[1].velocity = bubble[2];
 					self.bubbles.push(circle[1]);
@@ -205,8 +205,8 @@ class GameLayer extends eui.Component {
 				self.keypress_span_r_u = press_span
 				velocity = [-15, 0];
 				point = [self.stageW - 30, 840];
-				arr.push([_r, [self.stageW-30, 800], [velocity[0] + (Math.random() - 0.5) * 4, 0]]);
-				arr.push([_r, [self.stageW-30, 850], [velocity[0] + (Math.random() - 0.5) * 4, 0]]);
+				arr.push([_r, [self.stageW - 30, 800], [velocity[0] + (Math.random() - 0.5) * 4, 0]]);
+				arr.push([_r, [self.stageW - 30, 850], [velocity[0] + (Math.random() - 0.5) * 4, 0]]);
 			} else if (key == "o") {
 				// 右中
 				if (self.keypress_span_r_m > 0)
@@ -214,8 +214,8 @@ class GameLayer extends eui.Component {
 				self.keypress_span_r_m = press_span
 				point = [self.stageW - 30, 440];
 				velocity = [-15, 0];
-				arr.push([_r, [self.stageW-30, 400], [velocity[0] + (Math.random() - 0.5) * 4, 0]]);
-				arr.push([_r, [self.stageW-30, 450], [velocity[0] + (Math.random() - 0.5) * 4, 0]]);
+				arr.push([_r, [self.stageW - 30, 400], [velocity[0] + (Math.random() - 0.5) * 4, 0]]);
+				arr.push([_r, [self.stageW - 30, 450], [velocity[0] + (Math.random() - 0.5) * 4, 0]]);
 			} else if (key == "m") {
 				// 右下
 				if (self.keypress_span_r_d > 0)
@@ -313,7 +313,7 @@ class GameLayer extends eui.Component {
 	}
 
 	private flyJet(angle, velocity): number[] {
-		return [Math.cos(Math.random() * angle - angle) * velocity,   -1*velocity];
+		return [Math.cos(Math.random() * angle - angle) * velocity, -1 * velocity];
 	}
 
 	private calGravitation(p1: number[], p2: number[]): number[] {
@@ -338,9 +338,17 @@ class GameLayer extends eui.Component {
 		t_l.texture = RES.getRes('t_left_png');
 		t_l.width = 285;
 		t_l.height = 333;
-		t_l.x = 121;
+		t_l.x = 110;
 		t_l.y = 950;
 		this.addChildAt(t_l, 1);
+
+		let z_label = new egret.TextField();
+		z_label.text = "z";
+		z_label.size = 40;
+		z_label.textColor = 0xff0000;
+		z_label.x = 220;
+		z_label.y = 1150;
+		this.addChildAt(z_label,2);
 
 		var t_r: egret.Bitmap = new egret.Bitmap();
 		t_r.texture = RES.getRes('t_right_png');
@@ -349,6 +357,14 @@ class GameLayer extends eui.Component {
 		t_r.x = 584;
 		t_r.y = 950;
 		this.addChildAt(t_r, 1);
+
+		let m_label = new egret.TextField();
+		m_label.text = "m";
+		m_label.size = 40;
+		m_label.textColor = 0xff0000;
+		m_label.x = 700;
+		m_label.y = 1150;
+		this.addChildAt(m_label,2);
 	}
 
 	private displayScore() {
